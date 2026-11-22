@@ -1,0 +1,24 @@
+<section class="bg-black px-6 py-50">
+  <h2 class="mb-10 text-center text-2xl font-light uppercase tracking-[0.25em] text-slate-300 drop-shadow-[0_0_8px_rgba(186,214,255,0.35)]">Àudio</h2>
+
+  <article class="reproductor mx-auto max-w-xl rounded-lg border border-slate-700/60 bg-zinc-950 p-6 text-center">
+    <h3 class="mb-2 text-lg font-light uppercase tracking-widest text-slate-300">
+      {{ pista.titol }}
+    </h3>
+    <p class="mb-5 text-sm leading-relaxed text-slate-400">
+      {{ pista.descripcio }}
+    </p>
+
+    <!--
+      controls: botons natius de reproducció, volum i progrés
+      sense autoplay: l'usuari decideix quan sona
+      El navegador prova les <source> en ordre: primer OGG (pesa menys), després MP3 (compatible amb tot)
+      El text final només es veu si el navegador no suporta <audio>
+    -->
+    <audio controls>
+      <source src="/audio/{{ pista.nom }}.ogg" type="audio/ogg">
+      <source src="/audio/{{ pista.nom }}.mp3" type="audio/mpeg">
+      El teu navegador no admet àudio HTML5.
+    </audio>
+  </article>
+</section>
