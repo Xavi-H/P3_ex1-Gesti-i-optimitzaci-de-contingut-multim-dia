@@ -4,6 +4,7 @@ import { PersonatgeComponent } from './personatge/personatge.component';
 import { HistoriaComponent } from './historia/historia.component';
 import { GalleryComponent } from '../gallery/gallery.component';
 import { AudioPlayerComponent } from '../audio-player/audio-player.component';
+import { VideoPlayerComponent } from '../video-player/video-player.component';
 
 export const routes: Routes = [
   { path: '', component: IniciComponent, pathMatch: 'full' },
@@ -11,5 +12,6 @@ export const routes: Routes = [
   { path: 'historia', component: HistoriaComponent },
   { path: 'galeria', component: GalleryComponent },
   { path: 'audio', component: AudioPlayerComponent },
+  { path: 'video', component: VideoPlayerComponent },
   { path: '**', redirectTo: '' },
 ];

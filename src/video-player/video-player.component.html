@@ -1,0 +1,35 @@
+<section class="bg-black px-6 py-12">
+  <h2 class="mb-10 text-center text-2xl font-light uppercase tracking-[0.25em] text-slate-300 drop-shadow-[0_0_8px_rgba(186,214,255,0.35)]">Vídeo</h2>
+
+  <article class="reproductor mx-auto max-w-3xl rounded-lg border border-slate-700/60 bg-zinc-950 p-6 text-center">
+    <h3 class="mb-2 text-lg font-light uppercase tracking-widest text-slate-300">{{ video.titol }}</h3>
+    <p class="mb-5 text-sm leading-relaxed text-slate-400">{{ video.descripcio }}</p>
+
+    <!--
+      controls: botons natius de reproducció, volum i pantalla completa
+      preload="none": no descarrega res fins que l'usuari prem play
+      poster: imatge que es veu abans de reproduir (evita el quadre negre)
+      width/height: reserven l'espai per evitar salts de disseny
+      sense autoplay: l'usuari decideix quan es reprodueix
+
+      Càrrega diferida real: les <source> i el <track> només existeixen quan
+      carregat() és true, és a dir, quan l'IntersectionObserver detecta el vídeo.
+      El navegador prova les fonts en ordre: WebM primer, MP4 com a alternativa segura.
+      El <track> afegeix subtítols en català (fitxer .vtt).
+    -->
+    <video
+      #videoRef
+      controls
+      preload="none"
+      poster="/imatges/poster-video.webp"
+      width="640"
+      height="360">
+      @if (carregat()) {
+        <source src="/video/{{ video.nom }}.webm" type="video/webm">
+        <source src="/video/{{ video.nom }}.mp4" type="video/mp4">
+        <track kind="captions" src="/video/{{ video.nom }}-ca.vtt" srclang="ca" label="Català" default>
+      }
+      El teu navegador no admet vídeos HTML5.
+    </video>
+  </article>
+</section>
